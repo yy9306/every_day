@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>层叠上下文</title>
+  <style>
+    .parent{
+    }
+    .box1, .box2, .box3{
+      width: 200px;
+      height: 200px;
+    }
+    .box1{
+      background: red;
+    }
+    .box2{
+      background: green;
+    }
+    .box3{
+      background: grey;
+      z-index: 3;
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <span>ewrwer</span>
+    <div class="box1">sdfsdfsdlfbox1</div>
+    <div class="box2">sdfsdfsdlfbox2</div>
+    <div class="box3">sdfsdfsdlfbox3</div>
+  </div>
+</body>
+</html>
