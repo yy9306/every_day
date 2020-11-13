@@ -19,55 +19,58 @@
 // 解释: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
 
 
-// 递归揭发
-export default (strs = '') => {
+// 递归解法
+// export default (strs = '') => {
   
-  if (!strs.length) return 0;
-  let maxLength = 0;
-  let currentStr = ''; // 缓存当前匹配的字符串
+//   if (!strs.length) return 0;
+//   let maxLength = 0;
+//   let currentStr = ''; // 缓存当前匹配的字符串
 
-  function calculateLength() {
-    for (let i = 0, len = strs.length; i < len; i++) {
-      const str = strs[i];
-      const index = currentStr.indexOf(str); 
-      if (index < 0) {
-        currentStr = `${currentStr}${str}`
-        maxLength = Math.max(maxLength, currentStr.length);
-      } else {
-        strs = strs.substring(index + 1);
-        currentStr = '';
-        (maxLength < strs.length) && calculateLength();
-        return;
-      }
-    }
-  }
+//   function calculateLength() {
+//     for (let i = 0, len = strs.length; i < len; i++) {
+//       const str = strs[i];
+//       const index = currentStr.indexOf(str); 
+//       if (index < 0) {
+//         currentStr = `${currentStr}${str}`
+//         maxLength = Math.max(maxLength, currentStr.length);
+//       } else {
+//         strs = strs.substring(index + 1);
+//         currentStr = '';
+//         (maxLength < strs.length) && calculateLength();
+//         return;
+//       }
+//     }
+//   }
 
-  if (maxLength < strs.length) {
-    calculateLength();
-  }
-  return maxLength;
-}
+//   if (maxLength < strs.length) {
+//     calculateLength();
+//   }
+//   return maxLength;
+// }
 
 // 双指针解法
-export default (strs = '') => {
-  let i = 0, 
-    j = 0,
-    maxLength = 0;
+export default (str = '') => {
+  if (!str.length) return 0;
+  let i = 0,
+      j = 0,
+      maxLength = 0;   // 保存长度
   const set = new Set();
 
-  for (i, len = strs.length; i < len; i++) {
-    const str = strs[i];
-    if (!set.has(str)) {
-      set.add(str);
-      maxLength = Math.max(set.size, maxLength);
-    } else {
-      while(set.has(str)) {
-        set.delete(set.delete(strs[j]));
-        j++;
+  for (i; i < str.length; i++) {
+      if (!set.has(str[i])) {
+          set.add(str[i]);
+          maxLength = Math.max(set.size, maxLength);
+      } else {
+          while (set.has(str[i])) {
+            debugger;
+              set.delete(str[j]);
+              j++
+          }
+          set.add(str[i]);
       }
-      set.add(str[i]);
-    }
-  }  
+  }
+
+  return maxLength;
 }
 
 
