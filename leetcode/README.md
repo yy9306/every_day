@@ -8,3 +8,4 @@
 1. [最长不含重复字符的子字符串](./code/string/ls-3.js)
 1. [卡牌分组](./code/ls-5.js)
 1. [种花问题](./code/ls-6.js)
+1. [格雷编码](./code/ls-7.js)
