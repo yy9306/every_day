@@ -4,9 +4,33 @@
 
 ## javascript 动画常用的api
 
-1. setInterval() => clearInterval();
-1. setTimeout() => clearSetTimeout();
-1. requestAnimationFrame() => cancelAnimationFrame();
+**1、** setInterval() => clearInterval();
+
+  > setInterval 以 n 毫秒的间隔时间调用回调函数。
+
+
+**2、** setTimeout() => clearSetTimeout();
+
+  > setTimeout 是以 n 毫秒后执行回调函数，回调函数中可以递归 调用 setTimeout 来实现动画。
+
+**3、** requestAnimationFrame() => cancelAnimationFrame();
+
+- 按帧对网页进行重绘。该方法告诉浏览器希望执行动画并请求浏览器在下一次重 绘前调用回调函数来更新动画;
+- 由系统来决定回调函数的执行时机，在运行时浏览器会自动优化方法的调用
+
+### requestAnimationFrame 优势
+
+1、提升性能，防止掉帧
+
+- 浏览器 UI 线程：浏览器让执行 JavaScript 和更新用户界面（包括 重绘和回流）共用同一个单线程，称为“浏览器 UI 线程”
+- 浏览器 UI 线程的工作基于一个简单的队列系统，任务会被保存到队列中直到进程空闲。一旦空闲，队列中的下一个任务就被重新提取出 来并运行。这些任务要么是运行 JavaScript 代码，要么执行 UI 更 新。
+
+setTimeout 通过设置一个间隔时间不断改变图像，达到动画效果。该方法在一些低端机 上会出现卡顿、抖动现象。这种现象一般有两个原因：
+
+- setTimeout 的执行时间并不是确定的。
+- 2. 刷新频率受屏幕分辨率和屏幕尺寸影响，不同设备的屏幕刷新率可能不同， setTimeout 只能设置固定的时间间隔，这个时间和屏幕刷新间隔可能不同
+
+
 
 ## 动画小示例
 
