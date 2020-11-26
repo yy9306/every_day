@@ -30,3 +30,31 @@ function calculate(resultArr, digitStr) {
   }
   return resultArray;
 }
+
+
+// 分治思想解答 => 拆分、组合
+
+// function digits(str) {
+//   const digitsArray = ['', '', 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz'];
+//   if (!str) return;
+//   if (str.length < 2) {
+//     return digitsArray[Number(str)].split('');
+//   }
+//   let middle = Math.floor(str.length / 2);
+//   let left = str.slice(0, middle);
+//   let right = str.slice(middle);
+
+//   return compose(digits(left), digits(right))
+// }
+
+// function compose(left, right) {
+//   const result = [];
+//   for (let i = 0, len = left.length; i < len; i++) {
+//     for (let j = 0; j < right.length; j++) {
+//       result.push(`${left[i]}${right[j]}`)
+//     }
+//   }
+//   return result;
+// }
+
+
