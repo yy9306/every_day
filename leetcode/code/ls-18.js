@@ -24,8 +24,28 @@
 // E C   I H   N
 // T     S     G
 
-export default (s, numRows) => {
-  if (numRows === 1) return s;
+// export default (s, numRows) => {
+//   if (numRows === 1) return s;
+//     var result = [];
+//     var number = numRows - 1;
+  
+//     for (let i = 0, len = s.length; i < len; i++) {
+//       var remainder = i % number;
+//       var item = s[i];
+//       if ((Math.floor(i / number)) % 2 === 0) {
+//         i <= number ? result[remainder] = [item] : result[remainder].push(item);
+//       } else {
+//         i <= number ? result[number - remainder] = [item] : result[number - remainder].push(item)
+//       }
+//     }
+  
+//     return result.reduce((prev, next) => prev + next.join(''), '');
+//   };
+
+  // 优化， 将二维数组改成一维数组
+  export default (s, numRows) => {
+
+    if (numRows === 1) return s;
     var result = [];
     var number = numRows - 1;
   
@@ -33,11 +53,11 @@ export default (s, numRows) => {
       var remainder = i % number;
       var item = s[i];
       if ((Math.floor(i / number)) % 2 === 0) {
-        i <= number ? result[remainder] = [item] : result[remainder].push(item);
+        i <= number ? result[remainder] = item : result[remainder] = result[remainder] + item;
       } else {
-        i <= number ? result[number - remainder] = [item] : result[number - remainder].push(item)
+        i <= number ? result[number - remainder] = item : result[number - remainder] = result[number - remainder] + item
       }
     }
   
-    return result.reduce((prev, next) => prev + next.join(''), '');
+    return result.join('')
   };
