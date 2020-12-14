@@ -43,21 +43,45 @@
 //   };
 
   // 优化， 将二维数组改成一维数组
-  export default (s, numRows) => {
+  // export default (s, numRows) => {
 
-    if (numRows === 1) return s;
-    var result = [];
-    var number = numRows - 1;
+  //   if (numRows === 1) return s;
+  //   var result = [];
+  //   var number = numRows - 1;
   
+  //   for (let i = 0, len = s.length; i < len; i++) {
+  //     var remainder = i % number;
+  //     var item = s[i];
+  //     if ((Math.floor(i / number)) % 2 === 0) {
+  //       i <= number ? result[remainder] = item : result[remainder] = result[remainder] + item;
+  //     } else {
+  //       i <= number ? result[number - remainder] = item : result[number - remainder] = result[number - remainder] + item
+  //     }
+  //   }
+  
+  //   return result.join('')
+  // };
+
+
+  // 继续优化， 根据flag去判断数组添加的方向
+  export default (s, numRows) => {
+    if (numRows === 1) return s;
+    var result = new Array(numRows).fill('');
+
+    let flag = 1;
+    let count = 0;
     for (let i = 0, len = s.length; i < len; i++) {
-      var remainder = i % number;
-      var item = s[i];
-      if ((Math.floor(i / number)) % 2 === 0) {
-        i <= number ? result[remainder] = item : result[remainder] = result[remainder] + item;
-      } else {
-        i <= number ? result[number - remainder] = item : result[number - remainder] = result[number - remainder] + item
+      result[count] += s[i];
+      count += flag
+
+      if (count === 0) {
+        flag = 1;
+      }
+
+      if (count === numRows - 1) {
+        flag = -1
       }
     }
-  
+
     return result.join('')
-  };
+  }
