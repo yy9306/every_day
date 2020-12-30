@@ -28,3 +28,5 @@ function decodeStr(str) {
   }
   return str
 }
+
+// 用栈数据思想解决这个问题
